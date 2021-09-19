@@ -1,5 +1,6 @@
+from app.models import Task
 from django import forms
-from .models import Task
+from .models import *
 
 
 class TaskForm(forms.ModelForm):

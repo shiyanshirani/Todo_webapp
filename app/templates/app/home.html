@@ -1,18 +1,17 @@
-{% extends "app/base.html" %}
+<h1>Your todo list</h1>
 
 {% block content %}
-    <form action="" method="POST">
+
+    <form action="/" method="POST">
         {% csrf_token %}
-        {{ form.task }}
+        {{ form.title }}
         <input type="submit" value="Submit">
     </form>
 
-    {% for task in tasks %}
-        <div>
-            <a href="{% url 'update_task' task.id %}">Update</a>
-            <a href="{% url 'delete_task' task.id %}">Delete</a>
-            <p>{{ task }}</p>
-        </div>
+    {%  for task in tasks %}
+        <a href="{% url 'update' task.id %}">Update</a>
+        <a href="{% url 'delete' task.id %}">Delete</a>
+        <p>{{ task }}</p>
     {% endfor %}
 
 {% endblock %}
