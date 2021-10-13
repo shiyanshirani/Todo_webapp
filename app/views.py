@@ -20,7 +20,7 @@ def home(request):
 
 def update_task(request, pk):
     task = Task.objects.get(id=pk)
-    form = TaskForm()
+    form = TaskForm(instance=task)
 
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)

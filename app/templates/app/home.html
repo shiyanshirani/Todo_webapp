@@ -8,10 +8,18 @@
         <input type="submit" value="Submit">
     </form>
 
-    {%  for task in tasks %}
-        <a href="{% url 'update' task.id %}">Update</a>
-        <a href="{% url 'delete' task.id %}">Delete</a>
-        <p>{{ task }}</p>
+    {% for task in tasks %}
+        <div>
+            <a href="{% url 'update' task.id %}">Update</a>
+            <a href="{% url 'delete' task.id %}">Delete</a>
+
+            {% if task.completed == True %}
+                <strike>{{ task }}</strike>
+            {% else %}
+                <span>{{ task }}</span>
+            {% endif %}
+
+        </div>
     {% endfor %}
 
 {% endblock %}
